@@ -1,0 +1,19 @@
+📊 ANALYSE DES VENTES 📊
+
+1️⃣ Chiffre d'affaires total : 1220.00 €
+
+2️⃣ Ventes par produit :
+- Produit E : 35 unités vendues
+- Produit B : 27 unités vendues
+- Produit A : 24 unités vendues
+- Produit D : 21 unités vendues
+- Produit C : 15 unités vendues
+
+3️⃣ Ventes par ville :
+- Marseille : 27 unités vendues
+- Lyon : 21 unités vendues
+- Paris : 20 unités vendues
+- Bordeaux : 19 unités vendues
+- Nantes : 17 unités vendues
+- Strasbourg : 11 unités vendues
+- Lille : 7 unités vendues

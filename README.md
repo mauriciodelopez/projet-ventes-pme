@@ -1,54 +1,111 @@
-# 📊 Projet : Analyse des ventes d'une PME
+# 📊 Projet Data Engineer : Analyse des Ventes d'une PME
 
-Ce projet a été réalisé dans le cadre de la préparation à la formation Data Engineer (Simplon).
+Ce projet vise à automatiser la collecte, la transformation et l’analyse de données de ventes issues de fichiers CSV, en utilisant un environnement Dockerisé composé de deux services : un pour l’exécution des scripts ETL, un autre pour le stockage en base de données SQLite.
 
-## 🧩 Objectif
+---
 
-Créer un script Python capable de :
-- Télécharger des fichiers CSV depuis des liens publics
-- Créer une base de données SQLite
-- Insérer les données dans des tables (products, stores, sales)
-- Réaliser des requêtes SQL pour analyser les ventes
+## 📁 Arborescence du projet
 
-## 📁 Structure du projet
+```
+projet-ventes-pme/
+├── data/
+│   └── sales_data.db              # Base de données SQLite générée
+├── outputs/
+│   ├── resultats_analyse_ventes.txt  # Résumé complet des analyses
+│   ├── analyse.sql                   # Requêtes SQL d'analyse
+│   ├── note_analyse.txt             # Synthèse des résultats
+│   ├── schema_architecture.png      # Schéma de l’architecture
+│   └── schema_donnees.png           # MCD de la base de données
+├── scripts/
+│   └── main.py                   # Script principal ETL + analyse
+├── Dockerfile                   # Image pour exécuter les scripts
+├── docker-compose.yml           # Orchestration des deux services
+├── requirements.txt             # Dépendances Python
+└── README.md                    # Documentation du projet (ce fichier)
+```
 
-projet-ventes-pme/ ├── scripts/ # Contient le script principal │ └── main.py ├── outputs/ # Fichier d’analyse généré automatiquement │ └── resultats_analyse_ventes.txt ├── data/ # Base de données SQLite │ └── sales_data.db ├── requirements.txt # Librairies Python à installer ├── README.md # Ce fichier
+---
 
+## ⚙️ Technologies utilisées
 
-## 🛠️ Technologies utilisées
+- 🐍 Python 3.11
+- 🐳 Docker & Docker Compose
+- 🧮 SQLite
+- 📦 Pandas, Requests
 
-- Python 3.11
-- SQLite
-- Pandas
-- VSCode + Anaconda
+---
+
+## 🧱 Architecture du projet
+
+L’architecture suit une logique **ETL (Extract - Transform - Load)** avec deux services distincts :
+
+- `etl_scripts` : service Python pour télécharger les CSV, les transformer, charger en base et générer des analyses.
+- `db_sqlite` : service contenant SQLite pour accéder à la base de données.
+
+📌 **Volume Docker** partagé : les deux services accèdent à la base `sales_data.db` via un volume `db_data`.
+
+📷 Voir les schémas dans `outputs/schema_architecture.png` et `outputs/schema_donnees.png`.
+
+---
 
 ## 🚀 Lancer le projet
 
-1. Cloner ce dépôt ou ouvrir le dossier `projet-ventes-pme` dans VSCode
-2. Créer un environnement virtuel :
-   ```bash
-   conda create -n ventes_pme_env python=3.11
-   conda activate ventes_pme_env
+Assurez-vous d’avoir **Docker** installé.
 
-Installer les dépendances : pip install -r requirements.txt
+```bash
+docker compose up --build
+```
 
-Lancer le script principal : python scripts/main.py
+Cela :
+- Télécharge les données CSV
+- Crée les tables SQLite
+- Insère les données (sans doublon)
+- Génère automatiquement les fichiers d’analyse
 
-📊 Résultats
-Le script génère automatiquement le fichier :
+---
 
-👉 outputs/resultats_analyse_ventes.txt
+## 📂 Fichiers générés automatiquement
 
-Ce fichier contient :
+- `sales_data.db` : base de données SQLite
+- `outputs/resultats_analyse_ventes.txt` : analyse complète (CA, ventes par produit, par ville)
+- `outputs/analyse.sql` : requêtes SQL utilisées
+- `outputs/note_analyse.txt` : note d’analyse claire et concise
 
-Le chiffre d'affaires total
+---
 
-Les ventes par produit
+## 🧠 Résultats principaux
 
-Les ventes par ville
+Voici un exemple de résultats générés :
 
-👨‍💻 Réalisé par
-Mauricio Lopez – Projet de positionnement Data Engineer – Simplon, avril 2025
+```text
+📊 ANALYSE DES VENTES 📊
 
+1️⃣ Chiffre d'affaires total : 1220.00 €
 
+2️⃣ Ventes par produit :
+- Produit E : 35 unités
+- Produit B : 27 unités
+...
 
+3️⃣ Ventes par ville :
+- Marseille : 27 unités
+- Lyon : 21 unités
+...
+```
+
+---
+
+## 📌 Objectifs pédagogiques atteints
+
+✅ Créer une architecture à deux services  
+✅ Automatiser un pipeline ETL complet  
+✅ Gérer les encodages, doublons et relations SQL  
+✅ Générer des rapports et les documenter  
+✅ Travailler en environnement Dockerisé
+
+---
+
+## 🧠 Auteur
+
+👨‍💻 **Mauricio Lopez**  
+Projet réalisé dans le cadre d’un exercice de positionnement Data Engineer.

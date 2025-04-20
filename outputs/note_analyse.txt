@@ -1,15 +1,15 @@
-📊 ANALYSE DES VENTES 📊
+📌 Synthèse des résultats :
 
-1️⃣ Chiffre d'affaires total : 1220.00 €
+1️⃣ Le chiffre d'affaires total est de 1220.00 €
 
-2️⃣ Ventes par produit :
+2️⃣ Les produits les plus vendus :
 - Produit E : 35 unités
 - Produit B : 27 unités
 - Produit A : 24 unités
 - Produit D : 21 unités
 - Produit C : 15 unités
 
-3️⃣ Ventes par ville :
+3️⃣ Répartition des ventes par ville :
 - Marseille : 27 unités
 - Lyon : 21 unités
 - Paris : 20 unités

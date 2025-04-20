@@ -1,5 +1,4 @@
 pandas>=2.0.0 #pour manipuler les fichiers CSV et les DataFrames
 requests>=2.25.0 #pour télécharger les fichiers depuis les URLs Google Sheets
-sqlite3  # inclus par défaut dans Python, donc pas besoin de l'installer
 
 

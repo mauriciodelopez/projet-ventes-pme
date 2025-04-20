@@ -1,0 +1,23 @@
+version: '3.8'  # ✅ Version recommandée de Docker Compose
+
+services:
+  # 🔹 Service n°1 : base de données SQLite dans un conteneur léger
+  db_sqlite:
+    image: nouchka/sqlite3               # Utilise une image Docker déjà prête avec SQLite
+    volumes:
+      - db_data:/root/db                # 🔁 Crée un volume partagé pour stocker le fichier .db
+    container_name: sqlite_container     # Donne un nom lisible au conteneur
+
+  # 🔹 Service n°2 : ton script Python ETL
+  etl_scripts:
+    build: .                             # 🔨 Construit l'image Docker à partir du Dockerfile local
+    volumes:
+      - db_data:/app/data               # 🔁 Monte le même volume que db_sqlite
+      - ./outputs:/app/outputs          # 📤 Pour que les fichiers générés sortent dans ton projet
+    container_name: etl_scripts_container
+    depends_on:
+      - db_sqlite                       # 🕒 Lance ce service uniquement après que SQLite ait démarré
+
+# 📦 Déclare le volume partagé entre les 2 services
+volumes:
+  db_data:
